@@ -1,5 +1,5 @@
 FROM php:5.6.21-apache
-MAINTAINER Azure App Services Container Images <appsvc-images@microsoft.com>
+MAINTAINER Azure App Services Container Images <yoichi.kawasaki@outlook.com>
 
 COPY apache2.conf /bin/
 COPY init_container.sh /bin/
