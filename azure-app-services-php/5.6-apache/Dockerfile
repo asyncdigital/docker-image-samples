@@ -4,6 +4,7 @@ MAINTAINER Azure App Services Container Images <yoichi.kawasaki@outlook.com>
 COPY apache2.conf /bin/
 COPY init_container.sh /bin/
 COPY hostingstart.html /home/site/wwwroot/hostingstart.html
+COPY test.php /home/site/wwwroot/test.php
 
 RUN a2enmod rewrite expires include
 
