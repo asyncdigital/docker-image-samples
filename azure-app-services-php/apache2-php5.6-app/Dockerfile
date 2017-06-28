@@ -1,11 +1,8 @@
 FROM php:5.6.21-apache
-MAINTAINER Azure App Services Container Images <yoichi.kawasaki@outlook.com>
+MAINTAINER Yoichi Kawasaki Github@yokawasa
 
 COPY apache2.conf /bin/
 COPY init_container.sh /bin/
-COPY hostingstart.html /home/site/wwwroot/hostingstart.html
-COPY index.php /home/site/wwwroot/index.php
-COPY test.php /home/site/wwwroot/test.php
 
 RUN a2enmod rewrite expires include
 
@@ -56,12 +53,13 @@ RUN   \
    && chmod 777 /var/run \
    && chmod 777 /var/lock \
    && chmod 777 /bin/init_container.sh \
-   && cp /bin/apache2.conf /etc/apache2/apache2.conf \
-   && rm -rf /var/www/html \
-   && rm -rf /var/log/apache2 \
-   && mkdir -p /home/LogFiles \
-   && ln -s /home/site/wwwroot /var/www/html \
-   && ln -s /home/LogFiles /var/log/apache2 
+   && cp /bin/apache2.conf /etc/apache2/apache2.conf
+#   && cp /bin/apache2.conf /etc/apache2/apache2.conf \
+#   && rm -rf /var/www/html \
+#   && rm -rf /var/log/apache2 \
+#   && mkdir -p /home/LogFiles \
+#   && ln -s /home/site/wwwroot /var/www/html \
+#   && ln -s /home/LogFiles /var/log/apache2 
 
 RUN { \
                 echo 'opcache.memory_consumption=128'; \
@@ -81,6 +79,11 @@ RUN { \
     } > /usr/local/etc/php/conf.d/php.ini
 
 COPY sshd_config /etc/ssh/
+
+#ADD ./webapp /home/site/wwwroot/ 
+# From my observation, it looks, app services initialize the dir (/home/site/wwwroot/) after container image deployments
+# Therefore puts custom app files under /var/www/html, NOT under /home/site/wwwroot
+ADD ./webapp /var/www/html/
 
 EXPOSE 2222 8080
 
