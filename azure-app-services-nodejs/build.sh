@@ -15,7 +15,7 @@ docker login -u "$2" -p "$3"
 version=`cat ./angular4-app/VERSION`
 tag="angular4-app-$version"
 echo "tag=$tag"
-docker build -t "$1"/app-services-angular:$tag ./angular4-app
-docker push "$1"/app-services-angular:$tag
+docker build -t "$1"/app-services-nodejs:$tag ./angular4-app
+docker push "$1"/app-services-nodejs:$tag
 
 docker logout
