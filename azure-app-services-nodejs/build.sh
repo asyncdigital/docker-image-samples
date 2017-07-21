@@ -18,4 +18,10 @@ echo "tag=$tag"
 docker build -t "$1"/app-services-nodejs:$tag ./angular4-app
 docker push "$1"/app-services-nodejs:$tag
 
+version=`cat ./node8.12-app/VERSION`
+tag="node8.12-app-$version"
+echo "tag=$tag"
+docker build -t "$1"/app-services-nodejs:$tag ./node8.12-app
+docker push "$1"/app-services-nodejs:$tag
+
 docker logout
