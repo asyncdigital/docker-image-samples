@@ -1,4 +1,4 @@
-FROM ubuntu:16.10
+FROM ubuntu:16.04
 MAINTAINER Yoichi Kawasaki http://github.com/yokawasa
 RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y -q python-all python-pip 

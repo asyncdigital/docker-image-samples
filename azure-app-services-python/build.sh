@@ -18,4 +18,10 @@ echo "tag=$tag"
 docker build -t "$1"/app-services-python:$tag ./simple-flask-app
 docker push "$1"/app-services-python:$tag
 
+version=`cat ./django-app/VERSION`
+tag="django-app-$version"
+echo "tag=$tag"
+docker build -t "$1"/app-services-python:$tag ./django-app
+docker push "$1"/app-services-python:$tag
+
 docker logout
