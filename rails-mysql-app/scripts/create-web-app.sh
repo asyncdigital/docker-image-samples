@@ -1,10 +1,8 @@
 #!/bin/sh
 
 myAzureUser="http://yoichika-app"
-#myAzurePass="<service principal password>"
-#myAzureTenant="<service principal tenant name>"
-myAzurePass="76effcab-4b99-4f0f-94e8-31433f5e4b54"
-myAzureTenant="72f988bf-86f1-41af-91ab-2d7cd011db47"
+myAzurePass="<service principal password>"
+myAzureTenant="<service principal tenant name>"
 
 myResourceGroup="RG-yoichika-demo"
 myLocation="southeastasia"
