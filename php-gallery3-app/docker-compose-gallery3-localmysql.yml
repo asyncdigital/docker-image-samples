@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+    mysqlgallery3:
+        image: mysql:5.5 
+        volumes:
+            - /Users/yoichika/dev/docker/gallery3/mysql/:/var/lib/mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: rootpass
+            MYSQL_DATABASE: gallery3
+            MYSQL_USER: gallery3
+            MYSQL_PASSWORD: gallery3
+
+    gallery3:
+        image: kuberdock/gallery3
+        ports:
+            - "8080:80"
+        links:
+            - mysqlgallery3:mysql
+        volumes:
+            - /Users/yoichika/dev/docker/gallery3/gallery:/var/www/var/
+            - /var/log
+            - /Users/yoichika/dev/docker/gallery3/log:/var/log/apache2
+        hostname: myhost
+        domainname: localhost
+
