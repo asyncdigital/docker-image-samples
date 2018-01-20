@@ -23,10 +23,7 @@ Suppose you have mongo client command on your local machine, connect like this:
 ```
 mongo 127.0.0.1:30001/test
 ```
-
-In the case that you don't have mongo command local, connect mongo using mongo client in mongo container that you've run
-
-## MONGO_PORT_27017_TCP_ADDR:$MONGO_PORT_27017_TCP_PORTの部分はDockerで自動的に生成される環境変数
+In case that you don't have mongo command local, connect mongo using mongo client in mongo container that you've run
 ```
 docker run -it --link my-mongo:mongo --rm mongo sh -c 'exec echo "$MONGO_PORT_27017_TCP_ADDR:$MONGO_PORT_27017_TCP_PORT/test"'
 ```
