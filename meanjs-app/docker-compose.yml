@@ -1,0 +1,25 @@
+version: '2'
+services:
+  web:
+    restart: always
+    image: meanjs-app:0.0.1
+    ports:
+     - "8443:8443"
+    environment:
+     - NODE_ENV=production
+     - DB_1_PORT_27017_TCP_ADDR=db
+    depends_on:
+     - db
+  db:
+    image: mongo:3.2
+    restart: always
+    volumes_from:
+      - db-data
+  db-data:
+    image: mongo:3.2
+    volumes:
+      - /data/db
+      - /var/lib/mongodb
+      - /var/log/mongodb
+    entrypoint: /bin/true
+
