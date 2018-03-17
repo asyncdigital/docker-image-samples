@@ -8,4 +8,5 @@ version=`cat $cwd/../VERSION`
 tag="$version"
 docker run --rm \
     -e ELASTICSEARCH_HOST=40.74.124.30 \
+    -e WEBSITES_ENABLE_APP_SERVICE_STORAGE=true \
     -p 8080:8080 -p 2222:2222 -it php-fluentd-app:$tag
