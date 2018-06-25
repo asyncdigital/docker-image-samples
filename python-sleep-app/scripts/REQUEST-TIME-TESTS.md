@@ -7,6 +7,8 @@ PARAMETERS:
 
 OUTCOME:
 - request timeout after 4min (240 sec)
+- I expected to get http request timeout error after 230 sec but unexpectedly it was after 240 sec.
+
 ```
 $ date; curl https://mysleepapp01.azurewebsites.net/sleep; date
 
