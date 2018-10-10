@@ -3,9 +3,6 @@ import sys
 from datetime import datetime, timedelta
 from flask import Flask
 
-print 'ISO-8601: isoformat utcnow=' + str(datetime.utcnow().isoformat())
-
-
 app = Flask(__name__)
 
 def gettime():
@@ -14,15 +11,15 @@ def gettime():
 @app.route('/')
 def ok():
     s = gettime()
-    sys.stderr.write("STDERR:{}\n".format(s))
-    print("STDOUT:{}\n".format(s))
+    sys.stderr.write("STDERR:mytime:{}\n".format(s))
+    sys.stdout.write("STDOUT:mytime:{}\n".format(s))
     return s
 
 @app.route('/time')
 def curtime():
     s = gettime()
-    sys.stderr.write("STDERR:{}\n".format(s))
-    print("STDOUT:{}\n".format(s))
+    sys.stderr.write("STDERR:mytime:{}\n".format(s))
+    sys.stdout.write("STDOUT:mytime:{}\n".format(s))
     return s
 
 if __name__ == '__main__':
