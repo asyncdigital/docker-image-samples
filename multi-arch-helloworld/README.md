@@ -21,6 +21,24 @@ $ vi ~/.docker/config.json
 }
 ```
 
+## Sample Manifest
+
+For linux
+```sh
+$ cat linux/Dockerfile
+
+FROM alpine:latest
+CMD echo "Hello World from Linux"
+```
+
+For Windows
+```sh
+$ cat windows/Dockerfile
+
+FROM microsoft/nanoserver:latest
+CMD echo "Hello World from Windows"
+```
+
 ## Build Multi-Architecture Image
 
 ```sh
